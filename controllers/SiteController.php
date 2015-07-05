@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\EntryForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -93,7 +94,20 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
-    public function actionSay($message = "Привіт") {
-        return $this->render("say",['message'=>$message]);
+
+    public function actionEntry()
+    {
+        $model = new EntryForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            // дані в $model успішно перевірені
+
+            // тут робимо щось корисне з $model ...
+
+            return $this->render('entry-confirm', ['model' => $model]);
+        } else {
+            // або сторінка відображається вперше, або ж є помилка в даних
+            return $this->render('entry', ['model' => $model]);
+        }
     }
 }
