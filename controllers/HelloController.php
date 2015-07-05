@@ -8,7 +8,10 @@
 
 namespace app\controllers;
 
+use yii\web\Controller;
 
 class HelloController {
-
+    public function actionSay($message = "Привіт") {
+        return $this->render("say",['message'=>$message]);
+    }
 }
