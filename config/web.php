@@ -38,8 +38,14 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+
     ],
     'params' => $params,
+    //'layouts' => 'app\themes\uausa\views\layouts\base.php',
+    //'layoutPath' => 'app/themes/uausa/views/layouts',
+    //'viewPath' => 'themes\uausa\views',
+    //'defaultRoute' => 'app/controllers/IndexController::actionIndex()',
+
 ];
 
 if (YII_ENV_DEV) {

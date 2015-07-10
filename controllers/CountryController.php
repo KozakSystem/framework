@@ -27,7 +27,7 @@ class CountryController extends Controller
         $country->name = 'U.S.A.';
         $country->save();
 
-        return $this->render('index', [
+        return $this->render('welcome', [
             'countries' => $countries,
             'pagination' => $pagination,
         ]);
