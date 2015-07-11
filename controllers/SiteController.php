@@ -110,10 +110,4 @@ class SiteController extends Controller
             return $this->render('entry', ['model' => $model]);
         }
     }
-
-    public function actionWelcome($message = 'main') {
-        return $this->render('welcome', [
-            'message' => $message,
-        ]);
-    }
 }
