@@ -3,11 +3,9 @@
 namespace app\controllers;
 
 use Yii;
-use yii\filters\AccessControl;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
 use \app\models\Posts;
-
+use \app\models\Users;
 
 class WelcomeController extends Controller
 {
@@ -16,18 +14,18 @@ class WelcomeController extends Controller
 
     public function actionView()
     {
-        return $this->render('welcome');
+        $posts = Posts::find()->orderBy('id')->all();
+        $customers = Users::findBySql('SELECT user_name FROM users WHERE id=1')->all();
+        $user = Users::find()->where(['id' => '1'])->one();
+
+        return $this->render('welcome', ['posts' => $posts, 'user'=>$user] );
     }
 
-    public function actionRun($id, $name)
-    {
-        echo "id is: ". $id ." name is: ". $name;
-    }
 
-    public function actionModel() {
-        $model = new Posts();
+    /*public function actionModel() {
+        $model = new Posts(['scenario'=>'posts']);
         foreach($model->name as $name => $value) {
             echo "$value";
         }
-    }
+    }*/
 }
