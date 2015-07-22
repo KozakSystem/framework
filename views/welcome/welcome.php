@@ -16,22 +16,13 @@
             <div class="container">
                 <ul id="filters" class="clearfix">
                     <li><span class="filter active" data-filter="app card icon logo web">All</span></li>
-                    /
-                    <li><span class="filter" data-filter="app card logo">design</span></li>
-                    /
-                    <li><span class="filter" data-filter="card app web icon">branding</span></li>
-                    /
-                    <li><span class="filter" data-filter="icon web app">graphic</span></li>
-                    /
-                    <li><span class="filter" data-filter="logo app">animation</span></li>
-                    /
-                    <li><span class="filter" data-filter="web app card logo icon">illustration</span></li>
-                    /
-                    <li><span class="filter" data-filter="web app logo card">photography</span></li>
+                    <?php foreach ($posts_category as $category) : ?>
+                        / <li><span class="filter" data-filter="app card logo"><?=$category->category_name?></span></li>
+                    <?php endforeach; ?>
                 </ul>
                 <div id="portfoliolist">
                         <?php foreach ($posts as $post) : ?>
-                            <?= $this->render('/layouts/blocks/_item', ['post' => $post,'user'=>$user]) ?>
+                            <?= $this->render('/layouts/blocks/_item', ['post' => $post]) ?>
                         <?php endforeach; ?>
                 </div>
             </div>

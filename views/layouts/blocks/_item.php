@@ -4,10 +4,16 @@
             <img src="images/pic4.jpg" alt="Image 2">
             <div class="label">
                 <div class="label-text">
-                    <p class="text-title"><?=$post->post_name?></p>
-                    <span class="text-category"><?=$post->post_category?></span>
+                    <p class="text-title"><?=$post[post_name]?></p>
+                    <span class="text-category">
+                        <?php
+                            //if ($post->post_category == $users->user_name)
+                        ?>
+                    </span>
                     <hr/>
-                    <p class="text"><?=$user->user_name?></p>
+                    <p class="text"><?=$post[post_date]?></p>
+                    <div><?=$post[user_name]?></div>
+                    <div><?=$post[category_name]?></div>
                 </div>
                 <div class="label-bg"></div>
             </div>
