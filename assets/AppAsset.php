@@ -15,12 +15,27 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
+    public $sourcePath = '@vendor';
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/style.css',
+        'css/magnific-popup.css',
     ];
     public $js = [
+        'js/jquery.min.js',
+        'js/jquery.easing.min.js',
+        'js/jquery.mixitup.min.js',
+        'js/jquery.magnific-popup.js',
+        'js/classie.js',
+        'js/easyResponsiveTabs.js',
+        'js/jquery.contentcarousel.js',
+        'js/jquery.easing.min.js',
+        'js/jquery.mousewheel.js',
+        'js/responsive.menu.js',
+        'js/uisearch.js',
+        'js/global.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

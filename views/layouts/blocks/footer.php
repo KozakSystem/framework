@@ -74,7 +74,4 @@
         </div>
     </div>
 </div>
-</body>
-<?php $this->endBody() ?>
-</html>
-<?php $this->endPage() ?>
+

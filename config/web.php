@@ -3,17 +3,28 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'basic',
+    'id' => 'USA',
     'basePath' => dirname(__DIR__),
+    //'defaultRoute' => '/index',
+    'layoutPath' => '@app/views/layouts',
+    'viewPath' => '@app/views',
     'bootstrap' => ['log'],
+    'vendorPath' => dirname(__DIR__) . '/vendor',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'nvki0YG6CnLZX4PUjLgRQ3nBMFTOhq0D',
+            'baseUrl'=> '',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'urlManager' => array(
+            //'class' => 'yii\web\UrlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => require 'urls.php'
+        ),
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,

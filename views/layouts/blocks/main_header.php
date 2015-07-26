@@ -3,7 +3,7 @@
     <div class="wrap">
         <div class="header">
             <div class="logo">
-                <h1><a href="index.html"><img src="images/logo.png" alt=""/></a></h1>
+                <h1><a href="<?=Yii::$app->homeUrl;?>"><img src="images/logo.png" width="60" alt="icon"/></a></h1>
             </div>
             <div class="h_right">
                 <ul class="menu">

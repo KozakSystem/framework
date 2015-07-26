@@ -1,19 +1,16 @@
 
-
-<?php $this->beginContent('@app/views/layouts/blocks/head.php'); ?>
-    <!-- You may need to put some content here -->
-<?php $this->endContent(); ?>
-
-<?php $this->beginContent('@app/views/layouts/blocks/header.php'); ?>
-<!-- You may need to put some content here -->
-<?php $this->endContent(); ?>
+<?php $this->beginPage() ?>
+<?= $this->render('blocks/head.php') ?>
 
 <?php $this->beginBody() ?>
 
+<?= $this->render('blocks/base_header.php') ?>
 <?= $content ?>
+<?= $this->render('blocks/footer.php') ?>
 
 <?php $this->endBody() ?>
+</body>
+</html>
+<?php $this->endPage() ?>
 
-<?php $this->beginContent('@app/views/layouts/blocks/footer.php'); ?>
-    <!-- You may need to put some content here -->
-<?php $this->endContent(); ?>
+

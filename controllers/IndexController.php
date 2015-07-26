@@ -4,14 +4,15 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
+use yii\helpers\Url;
 use \app\models\Posts;
 use \app\models\Users;
 use \app\models\PostsCategory;
 
 
-class WelcomeController extends Controller
+class IndexController extends Controller
 {
-    public $layout = 'base';
+    public $layout = 'main';
     public $defaultAction = 'view';
 
 
@@ -22,7 +23,7 @@ class WelcomeController extends Controller
     public function getPosts()
     {
         $query = new \yii\db\Query;
-        $query->select('post_category, post_name, post_date, user_name, category_name')
+        $query->select('posts.id,post_category, post_name, post_date, post_desc, user_name, category_name')
             ->from('posts')
             ->leftJoin('users', ' posts.post_author = users.id')
             ->innerJoin('posts_category', ' posts.post_category = posts_category.id');
@@ -43,8 +44,7 @@ class WelcomeController extends Controller
 
        // $users = Users::find()->orderBy('id')->all();
         //$user = Users::findBySql('SELECT user_name FROM users')->where('id=$posts->post_author')->all();
-
-        return $this->render('welcome', ['posts' => $this->getPosts(), 'posts_category' => $this->getPostsCategory()] );
+        return $this->render('index', ['posts' => $this->getPosts(), 'posts_category' => $this->getPostsCategory()] );
     }
 
 
