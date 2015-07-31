@@ -4,11 +4,7 @@ namespace app\controllers\post;
 
 use Yii;
 use yii\web\Controller;
-use yii\helpers\Url;
-use \app\models\Posts;
-use \app\models\Users;
-use \app\models\PostsCategory;
-
+use app\models\post\Posts;
 
 class PostController extends Controller
 {
@@ -19,34 +15,36 @@ class PostController extends Controller
     {
         return Yii::getAlias('@app/views/post');
     }
+    public function actionLikes($postid) {
+        $model = Post::find()->where(['id' => $postid])->one();
+        print_r($model->post_likes);
 
-    public function getLink()
-    {
-        return url('/post',array('alias'=>$this->alias));
+        if(app()->request->isAjaxRequest) {
+            echo \CJSON::encode(array(
+                'success'=>'true'
+            ));
+        }
     }
-
-    public function getPosts()
+    /*public function getPost($post_id)
     {
         $query = new \yii\db\Query;
-        $query->select('posts.id,post_category, post_name, post_date, user_name, category_name')
+        $query->select('posts.*, user_name, category_name')
             ->from('posts')
-            ->leftJoin('users', ' posts.post_author = users.id')
-            ->innerJoin('posts_category', ' posts.post_category = posts_category.id');
+            ->leftJoin('users', ' posts.post_author =users.id')
+            ->innerJoin('posts_category', ' posts.post_category = posts_category.id')
+            ->where(['posts.id' => $post_id]);
         $command = $query->createCommand();
-        return $posts_category = $command->queryAll();
-    }
-    public function actionView()
-    {
-        return $this->render('view', ['posts' => $this->getPosts()] );
-    }
-
-
-
-
-    /*public function actionModel() {
-        $model = new Posts(['scenario'=>'posts']);
-        foreach($model->name as $name => $value) {
-            echo "$value";
-        }
+        return $command->queryAll();
     }*/
+    public function actionView($postid)
+    {
+        $model = Posts::find()
+            ->where(['post_id' => $postid])
+            ->rightJoin('users', '`users`.`user_id` = `posts`.`post_author`')
+            ->one();
+        $model->updateCounters(array('post_views'=>1));
+        $model->save();
+        print_r($model->user_name);
+       // return $this->render('view', ['post' => $model] );
+    }
 }

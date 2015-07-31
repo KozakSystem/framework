@@ -84,3 +84,24 @@ $(document).ready(function() {
     });
 });
 
+$('.post-likes').on('click', '.like',function (e) {
+    e.preventDefault();
+    $.ajax({
+        url: '/post/likes',
+        type: 'GET',
+        data: {
+            id: $(this).attr('data-id')
+        },
+        success: function(json){
+            if(json){
+                var data=$.parseJSON(json);
+                if(data.plus)
+                    $parent.find('.like span').text(data.plus);
+                if(data.minus)
+                    $parent.find('.dislike span').text(data.minus);
+                if(data.message)
+                    alert(data.message);
+            }
+        }
+    });
+})

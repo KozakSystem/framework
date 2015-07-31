@@ -5,11 +5,14 @@ $params = require(__DIR__ . '/params.php');
 $config = [
     'id' => 'USA',
     'basePath' => dirname(__DIR__),
-    //'defaultRoute' => '/index',
+    'defaultRoute' => 'index/view',
     'layoutPath' => '@app/views/layouts',
     'viewPath' => '@app/views',
     'bootstrap' => ['log'],
     'vendorPath' => dirname(__DIR__) . '/vendor',
+    'modules' => [
+
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -48,10 +51,14 @@ $config = [
                 ],
             ],
         ],
+        'thumbnail' => [
+            'class' => 'himiklab\thumbnail\EasyThumbnail',
+            'cacheAlias' => 'assets/gallery_thumbnails',
+        ],
         'db' => require(__DIR__ . '/db.php'),
-
     ],
     'params' => $params,
+
     //'layouts' => 'app\themes\uausa\views\layouts\base.php',
     //'layoutPath' => 'app/themes/uausa/views/layouts',
     //'viewPath' => 'themes\uausa\views',
@@ -62,6 +69,7 @@ $config = [
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
+
     $config['modules']['debug'] = 'yii\debug\Module';
 
     $config['bootstrap'][] = 'gii';

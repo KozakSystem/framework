@@ -1,9 +1,10 @@
-<?php use yii\helpers\Url; //print_r($post);?>
-
-<a class="popup-with-zoom-anim" href="#small-dialog" post="<?=$post[id]?>">
+<?php
+use yii\helpers\Html;
+?>
+<a class="popup-with-zoom-anim" href="#small-dialog" post="<?=$post[post_id]?>">
     <div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
         <div class="portfolio-wrapper">
-            <img src="images/pic4.jpg" alt="Image 2">
+            <?= Html::img($post[post_title_img], ['width'=>'262', 'height'=>'147']);?>
             <div class="label">
                 <div class="label-text">
                     <p class="text-title"><?=$post[post_name]?></p>
