@@ -6,7 +6,7 @@
 <div class="main_bg">
     <div class="wrap">
         <div class="main">
-            <div id="small-dialog" class="mfp-hide">
+            <div id="small-dialog" class="mfp-hide popup-window">
                 <div class="pop_up">
                     <h2>Lorem Ipsum is simply dummy text of the printing and industry</h2>
                     <img src="images/zoom.jpg" title="image-name">

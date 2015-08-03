@@ -20,8 +20,9 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         //'css/site.css',
-        'css/style.css',
         'css/magnific-popup.css',
+        'css/reg_form.css',
+        'css/style.css',
     ];
     public $js = [
         'js/jquery.min.js',

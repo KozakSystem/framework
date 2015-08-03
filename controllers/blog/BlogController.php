@@ -18,32 +18,61 @@ class BlogController extends Controller
         return Yii::getAlias('@app/views/blog');
     }
 
-    public function getLink()
+    public function getPagination($query)
     {
-        return url('/post',array('alias'=>$this->alias));
+        $pagination = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $query->count(),
+        ]);
+        return $pagination;
+    }
+
+    public function actionSortDate($postdate)
+    {
+        $query = Posts::find()->joinWith('users')->joinWith('postsCategory')->where(['post_date' => $postdate]);
+        $pagination = $this->getPagination($query);
+        $model = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        return $this->render('view', ['posts' => $model, 'pagination' => $pagination]);
+    }
+
+    public function actionSortCategory($categoryid)
+    {
+        $query = Posts::find()->joinWith('users')->joinWith('postsCategory')->where(['posts_category.category_id' => $categoryid]);
+        $pagination = $this->getPagination($query);
+        $model = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        return $this->render('view', ['posts' => $model, 'pagination' => $pagination]);
+    }
+    public function actionSortViews($postviews)
+    {
+        $query = Posts::find()->joinWith('users')->joinWith('postsCategory')->where(['post_views' => $postviews]);
+        $pagination = $this->getPagination($query);
+        $model = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        return $this->render('view', ['posts' => $model, 'pagination' => $pagination]);
+    }
+    public function actionSortAuthor($authorid)
+    {
+        $query = Posts::find()->joinWith('users')->joinWith('postsCategory')->where(['post_author' => $authorid]);
+        $pagination = $this->getPagination($query);
+        $model = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        return $this->render('view', ['posts' => $model, 'pagination' => $pagination]);
     }
 
     public function actionView()
     {
-        // $model = new \app\models\blog\Blog;
-
-
-//        $model = Posts::find()
-//            ->leftJoin('users', '`posts`.`post_author` = `users`.`user_id`')
-//            ->leftJoin('posts_category', ' `posts`.`post_category` =  `posts_category`.`category_id`');
-//            ->joinWith(['posts.post_author' => 'users.user_id'])
-//            ->joinWith('users')
-//            ->WHERE([' posts_category.category_id' => 'posts.post_category ', 'posts.post_author' => 'users.user_id']);
-
-
-        $posts = Posts::find()->with('users', 'postsCategory')->all();
+        $query = Posts::find()->with('users', 'postsCategory');
+        $pagination = $this->getPagination($query);
+        $model = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
         //print_r($posts[0]->users[0][user_name]);
-        $pagination  = new Pagination([
-            'defaultPageSize' => 5,
-            'totalCount' => count($posts),
-        ]);
-
-
-        return $this->render('view', ['posts' => $posts,'pagination' => $pagination] );
+        return $this->render('view', ['posts' => $model, 'pagination' => $pagination]);
     }
 }

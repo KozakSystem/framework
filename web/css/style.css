@@ -279,19 +279,19 @@ body {
 	transition: all 0.3s ease-in-out;
 }
 .soc_icons ul li a.icon1{
-	background: #39579D url('../images/icon1.png') no-repeat 18px 12px;
+	background: #39579D url('../images/icon1.png') no-repeat 8px 2px;
 }
 .soc_icons ul li a.icon2{
-	background: #02B3E9 url('../images/icon2.png') no-repeat 12px 13px;
+	background: #02B3E9 url('../images/icon2.png') no-repeat 2px 4px;
 }
 .soc_icons ul li a.icon3{
-	background: #DB4A39 url('../images/icon3.png') no-repeat 14px 12px;
+	background: #DB4A39 url('../images/icon3.png') no-repeat 3px 4px;
 }
 .soc_icons ul li a.icon4{
-	background: #EA4C89 url('../images/icon4.png') no-repeat 14px 12px;
+	background: #EA4C89 url('../images/icon4.png') no-repeat 3px 2px;
 }
 .soc_icons ul li a.icon5{
-	background: #5A872A url('../images/icon5.png') no-repeat 12px 18px;
+	background: #5A872A url('../images/icon5.png') no-repeat 2px 8px;
 }
 .soc_icons ul li a:hover{
 	zoom: 1;
@@ -798,11 +798,14 @@ p.para{
 	vertical-align:middle;
 	transition:none;
 }
+.blog_list li a > i.user{
+    background:url(../images/user-icon.png) no-repeat;
+}
 .blog_list li a:hover > i{
 	background:url(../images/blog_icons.png) no-repeat;	
 }
-.blog_list li a:hover{
-	color: #19BD9B;
+.blog_list li a:hover {
+    color: #19BD9B;
 }
 .blog_list li a span{
 	padding-left:5px;
@@ -830,6 +833,9 @@ p.para{
 }
 .blog_list li a:hover > i.views{
 	background-position:-72px -21px;
+}
+.blog_list li a:hover > i.user{
+    background: url(../images/user-icon-hover.png) no-repeat;
 }
 /*start blog_art */
 .blog_art{

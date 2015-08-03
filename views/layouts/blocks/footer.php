@@ -1,3 +1,57 @@
+<div id="registration-form" class="mfp-hide popup-window">
+    <div class="pop_up">
+        <div class="login">
+            <div class="login-top">
+                <h2>WELCOME</h2>
+                <h3>LOG IN</h3>
+            </div>
+            <div class="login-bottom">
+                <h3>Log in with a social network:</h3>
+                <ul>
+                    <li><a class="tw" href="#">Connect with Twitter</a></li>
+                    <li><a class="fa" href="#">Login with Facebook</a></li>
+                    <div class="clear"> </div>
+                </ul>
+
+                <h3>Log in With registered details:</h3>
+                <form>
+                    <div class="user">
+                        <input type="text" value="Username" name="user_name" required="required"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}">
+                        <i></i>
+                    </div>
+                    <div class="user-in">
+                        <input type="email" value="Email" name="user_email" required="required" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
+                        <i></i>
+                    </div>
+                    <div class="user-in">
+                        <input type="password" value="Password" name="user_password" required="required" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+                        <i></i>
+                    </div>
+                    <div class="user-in">
+                        <input type="password" value="Password" name="user_password_repeat" required="required" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+                        <i></i>
+                    </div>
+                </form>
+                <div class="keepme">
+                    <label class="checkbox"><input type="checkbox" name="checkbox" checked><i> </i> Keep me signed in</label>
+                    <div class="keep-loginbutton">
+                        <form>
+                            <input type="submit" value="Log in" />
+                        </form>
+                    </div>
+                    <div class="clear"> </div>
+                </div>
+                <div class="forgot">
+                    <p><a href="#">Forgotten your Password?</a></p>
+                    <div class="forgot-register">
+                        <p>Don't have an account? <a href="#">Register Now</a></p>
+                    </div>
+                    <div class="clear"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="footer_bg">
     <div class="wrap">
         <div class="footer">

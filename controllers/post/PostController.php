@@ -36,6 +36,7 @@ class PostController extends Controller
         $command = $query->createCommand();
         return $command->queryAll();
     }*/
+
     public function actionView($postid)
     {
         $model = Posts::find()
@@ -44,7 +45,7 @@ class PostController extends Controller
             ->one();
         $model->updateCounters(array('post_views'=>1));
         $model->save();
-        print_r($model->user_name);
-       // return $this->render('view', ['post' => $model] );
+        //print_r($model->users[0][user_name]);
+        return $this->render('view', ['post' => $model] );
     }
 }

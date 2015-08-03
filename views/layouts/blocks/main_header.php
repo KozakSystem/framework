@@ -47,6 +47,9 @@ use  yii\bootstrap\Nav;
                 </nav>
                 <script type="text/javascript" src="js/responsive.menu.js"></script>
                 <!-- end smart_nav * -->
+                <div class="h_right">
+                    <a class="popup-with-zoom-anim" href="#registration-form" post="<?=$post[post_id]?>">Login/Registration</a>
+                </div>
             </div>
             <div class="clear"></div>
         </div>
